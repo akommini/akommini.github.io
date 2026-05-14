@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adithya Kommini, Ph.D. | Architect - AI/ML</title>
-    <meta name="description" content="Personal portfolio of Adithya Kommini, Lead Data Scientist specializing in the modern data stack and AI system architecture.">
+    <meta name="description" content="Personal portfolio of Adithya Kommini, Architect - AI/ML specializing in the modern data stack and AI system architecture.">
     
+    <!-- Theme Toggle Script -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -40,17 +50,30 @@
         }
     </script>
     <style>
-        /* Custom subtle grid background */
+        /* Light mode defaults */
         .bg-grid {
             background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark mode overrides */
+        html.dark .bg-grid {
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
-        .glass-card {
+        html.dark .glass-card {
             background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            box-shadow: none;
         }
+
         /* Hide scrollbar for carousel */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -61,52 +84,67 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+<body class="bg-slate-200 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative transition-colors duration-300">
     
     <!-- Decorative Background -->
-    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0 transition-colors duration-300"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 dark:bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0 transition-colors duration-300"></div>
 
     <div class="relative z-10">
         <!-- Navigation -->
-        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-brand-400 transition-colors">AK.</a>
-            <div class="flex space-x-6">
-                <a href="projects.html" class="hover:text-brand-400 transition-colors hidden sm:block">Projects</a>
-                <a href="research.html" class="hover:text-brand-400 transition-colors hidden sm:block">Research</a>
-                <div class="flex space-x-4 border-l border-slate-700 pl-6">
-                    <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
+        <nav class="sticky top-0 z-50 w-full bg-slate-200/90 dark:bg-slate-950/90 backdrop-blur-md border-b-2 border-slate-300 dark:border-slate-800 transition-colors duration-300 shadow-sm dark:shadow-none">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tighter transition-colors flex items-center gap-1">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-500 dark:from-brand-400 dark:to-emerald-400">AK.</span> 
+                    <span class="font-normal text-lg tracking-normal opacity-80 hidden sm:inline-block text-slate-900 dark:text-white">Adithya Kommini</span>
+                </a>
+                <div class="flex space-x-6 items-center">
+                    <a href="projects.html" class="text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block">Projects</a>
+                    <a href="research.html" class="text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block">Research</a>
+                    <div class="flex space-x-4 border-l-2 border-slate-300 dark:border-slate-700 pl-6 items-center">
+                        <a href="mailto:adithyakommini@outlook.com" class="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-white transition-colors flex items-center gap-2" aria-label="Email">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#0A66C2] dark:hover:text-white transition-colors" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#333] dark:hover:text-white transition-colors" aria-label="GitHub">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        
+                        <div class="w-0.5 h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                        
+                        <button id="theme-toggle" type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-slate-400 dark:bg-brand-600" role="switch" aria-checked="false" aria-label="Toggle Dark Mode">
+                            <span id="theme-toggle-knob" aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5 flex items-center justify-center">
+                                <i class="fa-solid fa-sun text-[10px] text-slate-400 dark:hidden" id="theme-icon-sun"></i>
+                                <i class="fa-solid fa-moon text-[10px] text-brand-600 hidden dark:block" id="theme-icon-moon"></i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <header class="container mx-auto px-6 pt-20 pb-16 md:pt-32 md:pb-24 max-w-5xl">
-            <div class="inline-flex items-center space-x-2 bg-slate-800/50 rounded-full px-3 py-1 border border-slate-700 mb-6 text-sm font-medium text-brand-400">
+        <header class="container mx-auto px-6 pt-16 pb-16 md:pt-24 md:pb-24 max-w-5xl">
+            <div class="inline-flex items-center space-x-2 bg-slate-50 dark:bg-slate-800/50 rounded-full px-3 py-1 border-2 border-slate-300 dark:border-slate-700 mb-8 text-sm font-medium text-brand-600 dark:text-brand-400 shadow-sm dark:shadow-none">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                 </span>
-                <span>Architect - AI/ML @ Hakkoda</span>
+                <span>Architect - AI/ML @ Hakkoda, An IBM company</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
-                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400">Adithya</span>.
+            
+            <h1 class="text-base md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed mb-10">
+                As an Architect, I bridge the gap between computational engineering and scalable AI to drive enterprise value. I specialize in leveraging the modern data stack, machine learning, and high-performance computing to architect robust systems for advanced AI applications.
             </h1>
-            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl leading-relaxed mb-10">
-                As an Architect - AI/ML, I bridge the gap between computational engineering and scalable AI to drive enterprise value. I specialize in leveraging the modern data stack, machine learning, and high-performance computing to architect robust systems for advanced AI applications.
-            </p>
+            
             <div class="flex flex-wrap gap-4">
-                <a href="research.html" class="bg-white text-slate-900 px-6 py-3 rounded-lg font-medium hover:bg-slate-200 transition-colors shadow-lg shadow-white/10 flex items-center gap-2">
-                    <i class="fa-solid fa-microscope"></i> View My Research
+                <a href="projects.html" class="border-2 border-brand-500/40 text-brand-600 dark:text-brand-400 bg-brand-50/50 hover:bg-brand-100 dark:bg-transparent dark:hover:bg-brand-500/10 px-6 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 shadow-sm dark:shadow-none">
+                    <i class="fa-solid fa-code"></i> View My Projects
                 </a>
-                <a href="mailto:adithya.kommini@example.com" class="glass-card text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center space-x-2">
-                    <i class="fa-regular fa-envelope"></i>
-                    <span>Get in touch</span>
+                <a href="mailto:adithyakommini@outlook.com" class="border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-slate-50 hover:bg-slate-100 dark:bg-transparent dark:hover:bg-slate-800 px-6 py-2.5 rounded-full text-sm font-medium transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-envelope"></i> Get in touch
                 </a>
             </div>
         </header>
@@ -118,64 +156,64 @@
                 <!-- 1. Featured Articles / Industry Insights -->
                 <section id="articles" class="glass-card rounded-2xl p-8 md:col-span-3 hover:-translate-y-1 transition-transform duration-300 relative group/carousel">
                     <div class="flex items-center justify-between mb-8">
-                        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                            <i class="fa-solid fa-pen-nib text-brand-400"></i> Industry Insights
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                            <i class="fa-solid fa-pen-nib text-brand-500 dark:text-brand-400"></i> Industry Insights
                         </h2>
-                        <a href="https://hakkoda.io/blog" target="_blank" class="text-sm text-brand-400 hover:text-white transition-colors flex items-center gap-1">
-                            View all on Hakkoda <i class="fa-solid fa-arrow-right text-xs"></i>
+                        <a href="https://hakkoda.io/blog" target="_blank" class="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-white transition-colors flex items-center gap-1 font-medium">
+                            View all on Hakkoda, An IBM company <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     </div>
                     
                     <!-- Carousel Controls & Container -->
                     <div class="relative">
                         <!-- Left Button -->
-                        <button id="scroll-left" class="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-slate-800 text-white rounded-full flex items-center justify-center z-20 border border-slate-600 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-brand-500 hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 hidden md:flex" aria-label="Scroll left">
+                        <button id="scroll-left" class="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-white rounded-full flex items-center justify-center z-20 border-2 border-slate-300 dark:border-slate-600 shadow-md hover:text-brand-600 dark:hover:text-brand-400 hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 hidden md:flex" aria-label="Scroll left">
                             <i class="fa-solid fa-chevron-left"></i>
                         </button>
 
                         <!-- Scrollable Row -->
                         <div id="insights-scroll" class="flex overflow-x-auto gap-6 snap-x snap-mandatory scroll-smooth no-scrollbar pb-4">
                             
-                            <a href="https://hakkoda.io/resources/snowflake-snowpark/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Data Processing</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">How to Unlock Performance Improvements with Snowflake Snowpark</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">Deep dive into achieving significant performance boosts and optimizing data workflows by transitioning to modern, scalable compute frameworks.</p>
+                            <a href="https://hakkoda.io/resources/snowflake-snowpark/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Data Processing</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">How to Unlock Performance Improvements with Snowflake Snowpark</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">Deep dive into achieving significant performance boosts and optimizing data workflows by transitioning to modern, scalable compute frameworks.</p>
                             </a>
 
-                            <a href="https://hakkoda.io/resources/snowflake-native-apps/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Data Strategy</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">Monetizing Your Data With Snowflake Native Apps</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">A strategic look at how modern enterprises are securely packaging and monetizing data applications directly within cloud ecosystems.</p>
+                            <a href="https://hakkoda.io/resources/snowflake-native-apps/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Data Strategy</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Monetizing Your Data With Snowflake Native Apps</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">A strategic look at how modern enterprises are securely packaging and monetizing data applications directly within cloud ecosystems.</p>
                             </a>
 
-                            <a href="https://hakkoda.io/resources/snowflake-application-building/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Architecture</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">How VGS Leverages Snowflake Application Building</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">A case study utilizing Snowflake's architecture for secure, scalable, and compliant data tokenization and application development in FinTech.</p>
+                            <a href="https://hakkoda.io/resources/snowflake-application-building/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Architecture</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">How VGS Leverages Snowflake Application Building</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">A case study utilizing Snowflake's architecture for secure, scalable, and compliant data tokenization and application development in FinTech.</p>
                             </a>
 
-                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Data Engineering</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">Accelerating Data Science Pipelines with Snowpark for Python</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">Exploring the transition from pandas to Snowpark, enhancing performance, and streamlining Python-based data engineering workloads.</p>
+                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Data Engineering</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Accelerating Data Science Pipelines with Snowpark for Python</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">Exploring the transition from pandas to Snowpark, enhancing performance, and streamlining Python-based data engineering workloads.</p>
                             </a>
 
-                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Machine Learning</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">Building Scalable AI Solutions in the Snowflake Data Cloud</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">A comprehensive guide to deploying and managing robust machine learning models utilizing Snowflake's advanced compute capabilities.</p>
+                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Machine Learning</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Building Scalable AI Solutions in the Snowflake Data Cloud</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">A comprehensive guide to deploying and managing robust machine learning models utilizing Snowflake's advanced compute capabilities.</p>
                             </a>
                             
-                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-brand-500/50 hover:bg-slate-800 transition-all flex flex-col h-[220px]">
-                                <div class="text-xs text-brand-400 font-semibold mb-2 uppercase tracking-wider">Data Apps</div>
-                                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">Developing Interactive Applications with Streamlit</h3>
-                                <p class="text-sm text-slate-400 line-clamp-3 mt-auto">Leveraging Streamlit within Snowflake to rapidly prototype and deploy data-driven applications for enterprise stakeholders.</p>
+                            <a href="https://hakkoda.io/resources/" target="_blank" class="snap-start shrink-0 w-[85vw] sm:w-[350px] group block p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all flex flex-col h-[220px]">
+                                <div class="text-xs text-brand-600 dark:text-brand-400 font-bold mb-2 uppercase tracking-wider">Data Apps</div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Developing Interactive Applications with Streamlit</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mt-auto">Leveraging Streamlit within Snowflake to rapidly prototype and deploy data-driven applications for enterprise stakeholders.</p>
                             </a>
 
                         </div>
 
                         <!-- Right Button -->
-                        <button id="scroll-right" class="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-slate-800 text-white rounded-full flex items-center justify-center z-20 border border-slate-600 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-brand-500 hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 hidden md:flex" aria-label="Scroll right">
+                        <button id="scroll-right" class="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-white rounded-full flex items-center justify-center z-20 border-2 border-slate-300 dark:border-slate-600 shadow-md hover:text-brand-600 dark:hover:text-brand-400 hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 hidden md:flex" aria-label="Scroll right">
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
                     </div>
@@ -183,26 +221,29 @@
 
                 <!-- 2. Professional Experience Timeline -->
                 <section id="experience" class="glass-card rounded-2xl p-8 md:col-span-3 hover:-translate-y-1 transition-transform duration-300">
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-briefcase text-brand-400"></i> Professional Experience
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-briefcase text-brand-500 dark:text-brand-400"></i> Professional Experience
                     </h2>
                     
-                    <div class="space-y-4 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-brand-500 before:via-slate-700 before:to-transparent">
+                    <div class="space-y-4 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-brand-500 before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
                         
                         <!-- Experience 1 -->
                         <div class="relative flex items-start gap-4 group">
-                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border border-brand-500 bg-slate-900 text-brand-400 shrink-0 shadow shadow-brand-500/50 z-10 mt-1 cursor-help">
+                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-brand-500 bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shrink-0 shadow-sm dark:shadow shadow-brand-500/20 dark:shadow-brand-500/50 z-10 mt-1 cursor-help">
                                 <i class="fa-solid fa-star text-[10px]"></i>
-                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-slate-800 text-xs text-slate-300 rounded-md border border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">Present</span>
+                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-300 rounded-md border-2 border-slate-300 dark:border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">Present</span>
                             </div>
-                            <div class="flex-1 p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
+                            <div class="flex-1 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                                     <div>
-                                        <h3 class="font-bold text-white text-base">Lead Data Scientist</h3>
-                                        <div class="text-brand-400 text-xs font-medium">Hakkoda</div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Lead Data Scientist</h3>
+                                        <div class="flex items-center gap-2 text-brand-600 dark:text-brand-400 text-xs font-semibold">
+                                            <span>Hakkoda, An IBM company</span>
+                                            <span class="px-1.5 py-0.5 bg-brand-100 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 rounded text-[10px] uppercase tracking-wider border border-brand-200 dark:border-brand-500/30">Current</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="text-slate-400 text-sm leading-relaxed">
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                     Architecting modern cloud data strategies, building Snowflake Native Apps, and optimizing AI pipelines for enterprise clients. Leading teams to drive data democratization and performance scaling.
                                 </p>
                             </div>
@@ -210,56 +251,56 @@
 
                         <!-- Experience 2 -->
                         <div class="relative flex items-start gap-4 group">
-                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border border-slate-700 bg-slate-900 text-slate-400 shrink-0 z-10 mt-1 cursor-help">
+                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-slate-400 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 shrink-0 z-10 mt-1 cursor-help">
                                 <i class="fa-solid fa-brain text-[10px]"></i>
-                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-slate-800 text-xs text-slate-300 rounded-md border border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">April 2021 &ndash; Past</span>
+                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-300 rounded-md border-2 border-slate-300 dark:border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">April 2021 &ndash; Past</span>
                             </div>
-                            <div class="flex-1 p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
+                            <div class="flex-1 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                                     <div>
-                                        <h3 class="font-bold text-white text-base">Data Scientist</h3>
-                                        <div class="text-brand-400 text-xs font-medium">SFL Scientific</div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Data Scientist</h3>
+                                        <div class="text-brand-600 dark:text-brand-400 text-xs font-semibold">SFL Scientific</div>
                                     </div>
                                 </div>
-                                <p class="text-slate-400 text-sm leading-relaxed">
-                                    Defined data strategies and developed state-of-the-art AI algorithms for clients. Leveraged predictive modeling and deep learning to solve complex business challenges.
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    Developed state-of-the-art AI algorithms and defined comprehensive data strategies leveraging predictive modeling and deep learning to solve complex business challenges for diverse clients.
                                 </p>
                             </div>
                         </div>
 
                         <!-- Experience 3 -->
                         <div class="relative flex items-start gap-4 group">
-                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border border-slate-700 bg-slate-900 text-slate-400 shrink-0 z-10 mt-1 cursor-help">
+                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-slate-400 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 shrink-0 z-10 mt-1 cursor-help">
                                 <i class="fa-solid fa-microscope text-[10px]"></i>
-                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-slate-800 text-xs text-slate-300 rounded-md border border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">September 2014 &ndash; March 2021</span>
+                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-300 rounded-md border-2 border-slate-300 dark:border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">September 2014 &ndash; March 2021</span>
                             </div>
-                            <div class="flex-1 p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
+                            <div class="flex-1 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                                     <div>
-                                        <h3 class="font-bold text-white text-base">Graduate Research Assistant</h3>
-                                        <div class="text-brand-400 text-xs font-medium">University of Massachusetts Amherst (NET Lab)</div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Graduate Research Assistant</h3>
+                                        <div class="text-brand-600 dark:text-brand-400 text-xs font-semibold">University of Massachusetts Amherst (NET Lab)</div>
                                     </div>
                                 </div>
-                                <p class="text-slate-400 text-sm leading-relaxed">
-                                    Designed predictive models using high-performance computing tools to simulate quantum effects and implemented custom Boltzmann transport solvers. Developed foundational expertise in computational engineering, semiconductor dynamics, and parallelized C++ architectures.
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                    As part of my Ph.D. program, I designed and implemented predictive models and highly parallelized algorithms using high-performance computing clusters to simulate complex physical phenomena and analyze large-scale datasets.
                                 </p>
                             </div>
                         </div>
                         
                         <!-- Experience 4 -->
                         <div class="relative flex items-start gap-4 group">
-                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border border-slate-700 bg-slate-900 text-slate-400 shrink-0 z-10 mt-1 cursor-help">
+                            <div class="group/tooltip relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-slate-400 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 shrink-0 z-10 mt-1 cursor-help">
                                 <i class="fa-solid fa-code text-[10px]"></i>
-                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-slate-800 text-xs text-slate-300 rounded-md border border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">June 2018 &ndash; August 2018</span>
+                                <span class="absolute left-[calc(100%+0.75rem)] px-2.5 py-1 bg-white dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-300 rounded-md border-2 border-slate-300 dark:border-slate-700 opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50 shadow-lg font-medium">June 2018 &ndash; August 2018</span>
                             </div>
-                            <div class="flex-1 p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
+                            <div class="flex-1 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                                     <div>
-                                        <h3 class="font-bold text-white text-base">Engineering Intern</h3>
-                                        <div class="text-brand-400 text-xs font-medium">Coventor (Lam Research)</div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Engineering Intern</h3>
+                                        <div class="text-brand-600 dark:text-brand-400 text-xs font-semibold">Coventor (Lam Research)</div>
                                     </div>
                                 </div>
-                                <p class="text-slate-400 text-sm leading-relaxed">
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                     Software development for SEMulator3D. Developed and validated modeling approaches via Python APIs to address process and device-level challenges.
                                 </p>
                             </div>
@@ -270,40 +311,76 @@
 
                 <!-- 3. Technical Expertise -->
                 <section id="expertise" class="glass-card rounded-2xl p-8 md:col-span-3 hover:-translate-y-1 transition-transform duration-300">
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-layer-group text-brand-400"></i> Technical Expertise
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-brand-500 dark:text-brand-400"></i> Technical Expertise
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
-                        <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
-                            <span class="block text-white font-bold text-base mb-2">Data Architecture</span>
-                            <span class="text-slate-400 leading-relaxed block">Modern Data Stack, Scalable Pipelines, Cloud Infrastructure</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm mb-6">
+                        
+                        <!-- Data Architecture -->
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
+                            <span class="block text-slate-900 dark:text-white font-bold text-base mb-3">Data Architecture & Cloud</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Snowflake</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Snowpark</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">AWS</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">GCP</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Databricks</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Coalesce</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">CI/CD</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Data Governance</span>
+                            </div>
                         </div>
-                        <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
-                            <span class="block text-white font-bold text-base mb-2">AI & ML</span>
-                            <span class="text-slate-400 leading-relaxed block">Scalable Models, ML Systems, Deep Learning</span>
+                        
+                        <!-- AI & ML -->
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
+                            <span class="block text-slate-900 dark:text-white font-bold text-base mb-3">AI & Machine Learning</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">LLMs / GenAI</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">NLP</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Deep Learning</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Time-Series</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Knowledge Graphs</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">SageMaker</span>
+                            </div>
                         </div>
-                        <div class="p-5 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-500/50 transition-colors">
-                            <span class="block text-white font-bold text-base mb-2">Languages</span>
-                            <span class="text-slate-400 leading-relaxed block">Python, C++, SQL</span>
+
+                        <!-- Languages & Tools -->
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-colors">
+                            <span class="block text-slate-900 dark:text-white font-bold text-base mb-3">Languages & Frameworks</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Python</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">SQL</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">C++</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">PyTorch</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Streamlit</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">Sigma</span>
+                                <span class="px-2 py-1 bg-slate-200 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-[11px] font-semibold border border-slate-300 dark:border-slate-700">dbt</span>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <div class="pt-4 border-t-2 border-slate-200 dark:border-slate-800 text-right">
+                        <a href="projects.html#professional-projects" class="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-white transition-colors flex items-center justify-end gap-1">
+                            See how I applied these skills in production <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                        </a>
                     </div>
                 </section>
 
                 <!-- 4. Academic Research & Publications Link -->
-                <section class="glass-card rounded-2xl p-8 md:col-span-3 hover:-translate-y-1 transition-transform duration-300 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-slate-900/80 to-brand-900/20 border-brand-500/20">
+                <section class="glass-card rounded-2xl p-8 md:col-span-3 hover:-translate-y-1 transition-transform duration-300 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-slate-100 to-brand-50 dark:from-slate-900/80 dark:to-brand-900/20 border-brand-500/20">
                     <div>
-                        <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                            <i class="fa-solid fa-book-journal-whills text-brand-400"></i> Academic Research & Publications
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3">
+                            <i class="fa-solid fa-book-journal-whills text-brand-600 dark:text-brand-400"></i> Academic Research & Publications
                         </h2>
-                        <p class="text-slate-400 text-sm max-w-2xl">
-                            Explore my detailed Ph.D. research on thermoelectric capabilities, charge transport dynamics, my parallelized C++ Boltzmann Transport Solver, and a complete list of my published academic papers.
+                        <p class="text-slate-600 dark:text-slate-400 text-sm max-w-2xl">
+                            Explore a comprehensive archive of my academic research, encompassing predictive modeling, semiconductor dynamics, and a complete list of my peer-reviewed journal papers and conference appearances.
                         </p>
                     </div>
-                    <div class="flex gap-4 shrink-0">
-                        <a href="research.html" class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all">
-                            View Research Projects
+                    <div class="flex gap-4 shrink-0 flex-wrap">
+                        <a href="research.html" class="border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+                            View Research
                         </a>
-                        <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-brand-500/20 flex items-center gap-2">
+                        <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" class="border-2 border-brand-500 bg-brand-50 dark:bg-brand-500/10 hover:bg-brand-100 dark:hover:bg-brand-500/20 text-brand-700 dark:text-brand-300 px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 shadow-sm dark:shadow-none">
                             Google Scholar <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                         </a>
                     </div>
@@ -311,82 +388,43 @@
 
                 <!-- 6. Academic Roots & Accolades (Left) -->
                 <section id="academic-roots" class="glass-card rounded-2xl p-8 md:col-span-2 hover:-translate-y-1 transition-transform duration-300">
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-graduation-cap text-brand-400"></i> Academic Roots & Accolades
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap text-brand-500 dark:text-brand-400"></i> Academic Roots & Accolades
                     </h2>
                     
                     <div>
-                        <h3 class="font-bold text-white text-lg">Ph.D. & M.S., Electrical and Computer Engineering</h3>
-                        <div class="text-brand-400 text-sm font-medium mb-6">University of Massachusetts Amherst</div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Ph.D. & M.S., Electrical and Computer Engineering</h3>
+                        <div class="text-brand-600 dark:text-brand-400 text-sm font-semibold mb-4">University of Massachusetts Amherst</div>
                         
-                        <ul class="space-y-4 relative before:absolute before:inset-0 before:ml-1.5 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-700">
-                            
-                            <!-- Award 1 -->
-                            <li class="relative flex items-start gap-3">
-                                <div class="w-3 h-3 rounded-full bg-slate-900 border-2 border-brand-500 shrink-0 mt-1 z-10"></div>
-                                <div>
-                                    <span class="text-brand-400 font-mono text-xs block mb-0.5">Fall 2017</span>
-                                    <span class="text-slate-300 text-sm block">Best Teaching Assistant (TA) Award</span>
-                                </div>
-                            </li>
-                            
-                            <!-- Award 2 -->
-                            <li class="relative flex items-start gap-3">
-                                <div class="w-3 h-3 rounded-full bg-slate-900 border-2 border-slate-500 shrink-0 mt-1 z-10"></div>
-                                <div>
-                                    <span class="text-brand-400 font-mono text-xs block mb-0.5">Spring 2017</span>
-                                    <span class="text-slate-300 text-sm block">Department Research Scholar</span>
-                                </div>
-                            </li>
-
-                            <!-- News 1 -->
-                            <li class="relative flex items-start gap-3">
-                                <div class="w-3 h-3 rounded-full bg-slate-900 border-2 border-slate-500 shrink-0 mt-1 z-10"></div>
-                                <div>
-                                    <span class="text-brand-400 font-mono text-xs block mb-0.5">News Feature</span>
-                                    <a href="https://engineering.umass.edu/news/ece-researchers-featured-mghpcc-website" target="_blank" class="text-slate-300 text-sm hover:text-brand-400 transition-colors block">
-                                        ECE Researchers Featured on MGHPCC Website <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 opacity-50"></i>
-                                    </a>
-                                </div>
-                            </li>
-
-                            <!-- News 2 -->
-                            <li class="relative flex items-start gap-3">
-                                <div class="w-3 h-3 rounded-full bg-slate-900 border-2 border-slate-500 shrink-0 mt-1 z-10"></div>
-                                <div>
-                                    <span class="text-brand-400 font-mono text-xs block mb-0.5">News Feature</span>
-                                    <a href="https://www.mghpcc.org/exploring-thermoelectric-behavior-at-the-nanoscale/" target="_blank" class="text-slate-300 text-sm hover:text-brand-400 transition-colors block">
-                                        Exploring Thermoelectric Behavior at the Nanoscale <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 opacity-50"></i>
-                                    </a>
-                                </div>
-                            </li>
-
+                        <ul class="space-y-3 list-disc list-inside text-slate-700 dark:text-slate-300 text-sm pl-2 marker:text-brand-500">
+                            <li><strong>Fall 2017:</strong> Best Teaching Assistant (TA) Award</li>
+                            <li><strong>Spring 2017:</strong> Department Research Scholar</li>
                         </ul>
                     </div>
                 </section>
 
                 <!-- 7. Let's Connect (Right) -->
                 <section class="glass-card rounded-2xl p-8 md:col-span-1 flex flex-col justify-center items-center text-center hover:-translate-y-1 transition-transform duration-300">
-                    <h2 class="text-xl font-bold text-white mb-6">Let's Connect</h2>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Let's Connect</h2>
                     <div class="flex flex-wrap justify-center gap-4">
-                        <a href="mailto:adithya.kommini@example.com" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all shadow-lg" aria-label="Email">
+                        <a href="mailto:adithyakommini@outlook.com" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-transparent flex items-center justify-center text-slate-700 dark:text-white hover:bg-brand-50 dark:hover:bg-brand-500 hover:text-brand-600 hover:border-brand-300 dark:hover:text-white hover:scale-110 transition-all shadow-sm dark:shadow-lg" aria-label="Email">
                             <i class="fa-solid fa-envelope text-xl"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-[#0A66C2] hover:scale-110 transition-all shadow-lg" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-transparent flex items-center justify-center text-slate-700 dark:text-white hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] dark:hover:bg-[#0A66C2] hover:scale-110 transition-all shadow-sm dark:shadow-lg" aria-label="LinkedIn">
                             <i class="fa-brands fa-linkedin-in text-xl"></i>
                         </a>
-                        <a href="https://github.com/akommini" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-[#333] hover:scale-110 transition-all shadow-lg" aria-label="GitHub">
+                        <a href="https://github.com/akommini" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-transparent flex items-center justify-center text-slate-700 dark:text-white hover:bg-[#333] hover:text-white hover:border-[#333] dark:hover:bg-[#333] hover:scale-110 transition-all shadow-sm dark:shadow-lg" aria-label="GitHub">
                             <i class="fa-brands fa-github text-xl"></i>
                         </a>
                     </div>
-                    <p class="text-sm text-slate-500 mt-6">Feel free to reach out for collaborations or inquiries.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-6">Feel free to reach out for collaborations or inquiries.</p>
                 </section>
 
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-800 mt-12">
+        <footer class="border-t-2 border-slate-300 dark:border-slate-800 mt-12 transition-colors duration-300">
             <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-500 text-sm">
                     &copy; <script>document.write(new Date().getFullYear())</script> Adithya Kommini. All rights reserved.
@@ -398,87 +436,43 @@
         </footer>
     </div>
 
-    <!-- Gemini API Script -->
+    <!-- Theme & Interactivity Scripts -->
     <script>
-        const apiKey = ""; // The execution environment provides this key at runtime
-        
-        const aiInput = document.getElementById('ai-input');
-        const aiGenerateBtn = document.getElementById('ai-generate-btn');
-        const aiLoading = document.getElementById('ai-loading');
-        const aiOutput = document.getElementById('ai-output');
+        // 1. Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIconSun = document.getElementById('theme-icon-sun');
+        const themeIconMoon = document.getElementById('theme-icon-moon');
 
-        async function fetchGeminiWithBackoff(prompt, maxRetries = 5) {
-            const delays = [1000, 2000, 4000, 8000, 16000];
-            const systemInstruction = `You are an expert AI assistant representing Adithya Kommini, a Lead Data Scientist holding a Ph.D. in ECE. Adithya specializes in the modern data stack, high-performance computing, and architecting robust systems for AI applications. 
-            
-The user will provide a data bottleneck, architectural challenge, or AI use case. 
-Provide a highly professional, concise (3-4 paragraphs maximum) architectural recommendation. 
-Mention modern concepts/tools implicitly (like scalable data pipelines, vector databases, parallel compute, or modern cloud data warehouses). 
-Always conclude with a brief, friendly call to action encouraging the user to "Connect with Adithya to build this out together." Format the response nicely using Markdown (bullet points or bolding for key tools).`;
-
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    const data = await response.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
-                } catch (error) {
-                    if (i === maxRetries - 1) {
-                        throw error;
-                    }
-                    console.warn(`Attempt ${i + 1} failed, retrying in ${delays[i]}ms...`);
-                    await new Promise(resolve => setTimeout(resolve, delays[i]));
-                }
+        function updateIcon() {
+            if (document.documentElement.classList.contains('dark')) {
+                themeIconSun.classList.add('hidden');
+                themeIconMoon.classList.remove('hidden');
+            } else {
+                themeIconSun.classList.remove('hidden');
+                themeIconMoon.classList.add('hidden');
             }
         }
+        
+        updateIcon();
 
-        aiGenerateBtn.addEventListener('click', async () => {
-            const prompt = aiInput.value.trim();
-            if (!prompt) return;
-
-            // Update UI state to loading
-            aiGenerateBtn.disabled = true;
-            aiGenerateBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            aiLoading.classList.remove('hidden');
-            aiOutput.classList.add('hidden');
-
-            try {
-                const resultText = await fetchGeminiWithBackoff(prompt);
-                // Parse markdown into safe HTML
-                aiOutput.innerHTML = marked.parse(resultText);
-                aiOutput.classList.remove('hidden');
-            } catch (error) {
-                aiOutput.innerHTML = `<p class="text-red-400">Error connecting to the AI Co-Pilot. Please try again later.</p>`;
-                aiOutput.classList.remove('hidden');
-            } finally {
-                // Restore UI state
-                aiGenerateBtn.disabled = false;
-                aiGenerateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                aiLoading.classList.add('hidden');
+        themeToggleBtn.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
             }
+            updateIcon();
         });
 
-        // Carousel Scroll Logic
+        // 3. Carousel Scroll Logic
         document.addEventListener('DOMContentLoaded', () => {
             const scrollContainer = document.getElementById('insights-scroll');
             const scrollLeftBtn = document.getElementById('scroll-left');
             const scrollRightBtn = document.getElementById('scroll-right');
 
             if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
-                // Approximate card width + gap for smooth scrolling steps
                 const scrollStep = 374; 
 
                 scrollLeftBtn.addEventListener('click', () => {

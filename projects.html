@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Adithya Kommini</title>
-    <meta name="description" content="Research and Independent Projects by Adithya Kommini, Lead Data Scientist.">
+    <meta name="description" content="Professional Data Science and Independent Projects by Adithya Kommini.">
     
+    <!-- Theme Toggle Script -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +27,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -40,110 +50,201 @@
     <style>
         .bg-grid {
             background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        html.dark .bg-grid {
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+<body class="bg-slate-200 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative transition-colors duration-300">
     
     <!-- Decorative Background -->
-    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0 transition-colors duration-300"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 dark:bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0 transition-colors duration-300"></div>
 
     <div class="relative z-10">
         <!-- Navigation -->
-        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-brand-400 transition-colors">AK.</a>
-            <div class="flex space-x-6">
-                <a href="index.html" class="hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
-                <div class="flex space-x-4 border-l border-slate-700 pl-6">
-                    <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
+        <nav class="sticky top-0 z-50 w-full bg-slate-200/90 dark:bg-slate-950/90 backdrop-blur-md border-b-2 border-slate-300 dark:border-slate-800 transition-colors duration-300 shadow-sm dark:shadow-none">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tighter transition-colors flex items-center gap-1">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-500 dark:from-brand-400 dark:to-emerald-400">AK.</span> 
+                    <span class="font-normal text-lg tracking-normal opacity-80 hidden sm:inline-block text-slate-900 dark:text-white">Adithya Kommini</span>
+                </a>
+                <div class="flex space-x-6 items-center">
+                    <a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
+                    <div class="flex space-x-4 border-l-2 border-slate-300 dark:border-slate-700 pl-6 items-center">
+                        <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#0A66C2] dark:hover:text-white transition-colors" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#333] dark:hover:text-white transition-colors" aria-label="GitHub">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        
+                        <div class="w-0.5 h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                        
+                        <button id="theme-toggle" type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-slate-400 dark:bg-brand-600" role="switch" aria-checked="false" aria-label="Toggle Dark Mode">
+                            <span id="theme-toggle-knob" aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5 flex items-center justify-center">
+                                <i class="fa-solid fa-sun text-[10px] text-slate-400 dark:hidden"></i>
+                                <i class="fa-solid fa-moon text-[10px] text-brand-600 hidden dark:block"></i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <!-- Header -->
         <header class="container mx-auto px-6 pt-12 pb-12 max-w-4xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
-                My <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400">Projects</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
+                My <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-500 dark:from-brand-400 dark:to-emerald-400">Projects</span>
             </h1>
-            <p class="text-lg text-slate-400 leading-relaxed">
-                A collection of my academic research applications and independent open-source data science projects.
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                A showcase of large-scale enterprise data architectures, applied machine learning systems, and independent open-source data science tools.
             </p>
         </header>
 
         <main class="container mx-auto px-6 pb-24 max-w-4xl space-y-16">
             
-            <!-- Research Projects -->
-            <section id="research-projects">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2 flex items-center gap-3">
-                    <i class="fa-solid fa-microscope text-brand-400"></i> Research Projects
-                </h2>
+            <!-- Professional Projects -->
+            <section id="professional-projects">
+                <div class="flex items-center justify-between mb-6 border-b-2 border-slate-300 dark:border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                        <i class="fa-solid fa-briefcase text-brand-600 dark:text-brand-400"></i> Professional Projects
+                    </h2>
+                </div>
+
+                <!-- Client Confidentiality Note -->
+                <div class="bg-amber-100/50 dark:bg-amber-900/10 border border-amber-300 dark:border-amber-700/50 rounded-lg p-4 mb-8 text-amber-800 dark:text-amber-200/80 text-sm flex gap-3 shadow-sm">
+                    <i class="fa-solid fa-circle-info mt-0.5"></i>
+                    <p><strong>Note:</strong> The projects listed below were architected and executed for enterprise clients. Specific client names, sensitive data, and proprietary business logic have been generalized or omitted to comply with confidentiality agreements.</p>
+                </div>
                 
-                <ul class="space-y-6 list-none pl-0">
+                <ul class="space-y-8 list-none pl-0">
                     
+                    <!-- AI Marketing Copy Generation -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">High throughput 2D material discovery for thermoelectric applications: predicting power factor using physics aware models</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Calculates the power factor of 2D materials using existing databases by accurately modeling carrier transport.
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">AI-Driven Marketing Copy Generation System</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Led the architecture and deployment of an enterprise data application leveraging Snowflake Cortex to dynamically author marketing and SEO-optimized product descriptions at scale across multiple international regions.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Cortex</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Prompt Engineering</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowpark Python</span>
                         </div>
                     </li>
 
+                    <!-- AI Sales Agent -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Phonon drag contribution towards TE performance in MoS2: Using full phonon distribution</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Studies the contribution of different phonon modes towards the drag by calculating the full phonon distribution including normal processes.
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Intelligent Sales Agent for Analysts</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Developed cloud-native LLM-powered agents to assist analysts in querying complex sales and planning data via natural language. Delivered on-demand insights directly to stakeholders, significantly reducing report sprawl and manual dashboard creation.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Cortex</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">LLM Agents</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">RAG Architecture</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Semantic Search</span>
                         </div>
                     </li>
 
+                    <!-- Data Model Mapping App -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Anisotropy in power factor of 2D materials with periodic potential barriers using Wigner-Rode formalism</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Evaluates the anisotropy in power factor that arises from carriers being transported by different processes in 2D materials.
-                            <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.14.034037" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Intelligent Data Model Mapping Application</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Led the development of a native cloud data application to dynamically map data from diverse models to standard enterprise schemas. Built automated ELT workflows for data transformation, filtering, and mapping. Engineered version control, CI/CD, and leveraged integrated LLMs via Snowflake Cortex for in-app user guidance.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Native Apps</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Cortex</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">dbt (Data Build Tool)</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">GitHub Actions</span>
                         </div>
                     </li>
 
+                    <!-- PII Tokenization App -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Towards a higher power factor in 2D materials: Role of inelastic scattering mechanisms</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Determines optimal material parameters to optimize the thermoelectric power factor using a novel controlled-scattering approach.
-                            <a href="https://iopscience.iop.org/article/10.1088/2515-7639/ab4600" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Automated PII Detection and Tokenization Native App</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Built a Snowflake Native App for sensitive data detection to meet strict compliance requirements. Orchestrated Transformer models for known entity detection alongside Cortex LLMs for unstructured data. Enabled in-transit tokenization via external API integration using the <a href="https://www.verygoodsecurity.com/vault" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline font-medium">Very Good Security (VGS) vault</a>, seamlessly extending into dynamic data masking policies.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Native Apps</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">External Functions</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Transformer Models</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Dynamic Data Masking</span>
                         </div>
                     </li>
 
+                    <!-- NLP Monitoring Platform -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Thermoelectric properties of periodic quantum structures in the Wigner-Rode formalism</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Implements a comprehensive transport model using the Wigner–Rode formalism to study tunneling and barrier impacts in semiconducting nanostructures.
-                            <a href="https://iopscience.iop.org/article/10.1088/1361-648X/aaa110/meta" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Petabyte-Scale NLP Monitoring Platform</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Engineered a state-of-the-art multilingual monitoring platform processing over 1 billion documents and communication records. Integrated advanced semantic search, entity extraction pipelines, and knowledge graph clustering for robust 'needle in the haystack' event tracing deployed on distributed cloud infrastructure.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Named Entity Recognition (NER)</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Semantic Search</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Knowledge Graphs</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">AWS EC2 / S3</span>
                         </div>
                     </li>
 
+                    <!-- Feature Store -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Fowler-Nordheim emission in surface modified free-standing diamond nanomembranes</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Studies field emission from bulk emitters covered with a thin wide-gap semiconductor layer for mass spectrometry applications.
-                            <a href="https://www.nature.com/articles/s41598-019-43149-y" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Cloud-Native Centralized Feature Store</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Developed a highly scalable, centralized feature store utilizing modern cloud-native capabilities. Designed the architecture to support feature reuse, automated online synchronization, and robust role-based access control (RBAC) protocols across disparate data science teams.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Coalesce</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Role-Based Access Control (RBAC)</span>
                         </div>
                     </li>
 
+                    <!-- Pathogen ID -->
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg font-semibold leading-snug">Low-temperature enhancement of the thermoelectric Seebeck coefficient in gated 2D semiconductor nanomembranes</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            Formulates a novel controlled scattering approach by simulating a confined 3D material to mimic a 2D material with a gate.
-                            <a href="https://link.springer.com/article/10.1007/s10825-015-0782-1" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Deep Learning Pathogen Identification System</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Developed a multi-pathogen detection system employing complex deep learning architectures. Utilized both supervised and unsupervised methods in low-data regimes, ensuring rigorous model testing and validation across cloud-hosted machine learning environments.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">AWS SageMaker</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">PyTorch</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Convolutional Neural Networks (CNN)</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Transfer Learning</span>
+                        </div>
+                    </li>
+
+                    <!-- Cashflow Prediction Engine -->
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Portfolio Analysis and Cashflow Prediction Engine</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Designed high-throughput data ingestion architectures from disparate financial providers into a centralized cloud warehouse. Implemented time-series forecasting models directly within the data layer to predict cashflows, visualized via comprehensive business intelligence dashboards.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Snowflake Snowpark</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Time-Series Forecasting</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">ARIMA / Prophet</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Sigma</span>
+                        </div>
+                    </li>
+
+                    <!-- Demand Forecasting Engine -->
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Scalable Demand Forecasting Engine</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">
+                            Implemented extensive machine learning pipelines to forecast product demand across varying time horizons. Enabled optimized raw material procurement workflows by deploying distributed processing models and streaming predictions to executive reporting interfaces.
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Databricks</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">Spark SQL</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">XGBoost / LightGBM</span>
+                            <span class="px-2 py-1 bg-slate-300 dark:bg-slate-800 text-brand-700 dark:text-brand-400 rounded-md text-xs font-semibold border border-slate-400 dark:border-slate-700">PowerBI</span>
                         </div>
                     </li>
 
@@ -152,11 +253,11 @@
 
             <!-- Independent Projects -->
             <section id="independent-projects">
-                <div class="flex items-center justify-between mb-6 border-b border-slate-800 pb-2">
-                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                        <i class="fa-solid fa-code text-brand-400"></i> Independent Projects
+                <div class="flex items-center justify-between mb-6 border-b-2 border-slate-300 dark:border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                        <i class="fa-solid fa-code text-brand-600 dark:text-brand-400"></i> Independent Projects
                     </h2>
-                    <a href="https://github.com/akommini" target="_blank" class="text-sm text-brand-400 hover:text-white transition-colors flex items-center gap-1">
+                    <a href="https://github.com/akommini" target="_blank" class="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-white transition-colors flex items-center gap-1 font-medium">
                         View all on GitHub <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
@@ -165,8 +266,8 @@
                     
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">PCvalueBuilder: A recommender system to assist customers in upgrading their PC hardware</span>
-                            <a href="https://github.com/akommini/PCvalueBuilder" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">PCvalueBuilder: A recommender system to assist customers in upgrading their PC hardware</span>
+                            <a href="https://github.com/akommini/PCvalueBuilder" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -174,8 +275,8 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">A convolution neural network model for Spoken digit recognition using Mel-frequency Cepstrum</span>
-                            <a href="https://github.com/akommini/Spoken-Numeric-Digit-detection" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">A convolution neural network model for Spoken digit recognition using Mel-frequency Cepstrum</span>
+                            <a href="https://github.com/akommini/Spoken-Numeric-Digit-detection" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -183,8 +284,8 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">Implementation of image classifier for RGB images using artificial neural networks (NN)</span>
-                            <a href="https://github.com/akommini/ImageClassifierNN" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Implementation of image classifier for RGB images using artificial neural networks (NN)</span>
+                            <a href="https://github.com/akommini/ImageClassifierNN" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -192,8 +293,8 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">Optimal image compression for efficient reconstruction using unsupervised learning</span>
-                            <a href="https://github.com/akommini/ImageCompression" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Optimal image compression for efficient reconstruction using unsupervised learning</span>
+                            <a href="https://github.com/akommini/ImageCompression" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -201,8 +302,8 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">Air quality prediction using hyperparameter regression analysis</span>
-                            <a href="https://github.com/akommini/AirQuality" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Air quality prediction using hyperparameter regression analysis</span>
+                            <a href="https://github.com/akommini/AirQuality" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -210,8 +311,8 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">Design and Analysis of a Feed-forward PUF (32 nm node) under Voltage Scaling</span>
-                            <a href="https://github.com/akommini/Feed-forward-PUF" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Design and Analysis of a Feed-forward PUF (32 nm node) under Voltage Scaling</span>
+                            <a href="https://github.com/akommini/Feed-forward-PUF" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -219,14 +320,14 @@
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">Nanoscale Implementation of G-Share Branch Predictor</span>
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">Nanoscale Implementation of G-Share Branch Predictor</span>
                         </div>
                     </li>
 
                     <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
                         <div class="flex items-start justify-between gap-4">
-                            <span class="text-white text-lg font-semibold leading-snug">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</span>
-                            <a href="https://github.com/akommini/AES-IP-SOC" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                            <span class="text-slate-900 dark:text-white text-lg font-semibold leading-snug">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</span>
+                            <a href="https://github.com/akommini/AES-IP-SOC" target="_blank" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
@@ -238,16 +339,31 @@
         </main>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-800 mt-12">
+        <footer class="border-t-2 border-slate-300 dark:border-slate-800 mt-12 transition-colors duration-300">
             <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-500 text-sm">
                     &copy; <script>document.write(new Date().getFullYear())</script> Adithya Kommini. All rights reserved.
                 </p>
                 <div class="flex gap-4">
-                    <a href="index.html" class="text-slate-500 hover:text-white transition-colors text-sm">Main Portfolio</a>
+                    <a href="index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm">Main Portfolio</a>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- Theme Interactivity Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -6,6 +6,15 @@
     <title>Research & Publications | Adithya Kommini</title>
     <meta name="description" content="Academic research projects and publications by Adithya Kommini, Ph.D.">
     
+    <!-- Theme Toggle Script -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +27,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -40,157 +50,196 @@
     <style>
         .bg-grid {
             background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+        html.dark .bg-grid {
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
         .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        html.dark .glass-card {
             background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            box-shadow: none;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+<body class="bg-slate-200 dark:bg-slate-950 text-slate-700 dark:text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative transition-colors duration-300">
     
     <!-- Decorative Background -->
-    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0 transition-colors duration-300"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 dark:bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0 transition-colors duration-300"></div>
 
     <div class="relative z-10">
         <!-- Navigation -->
-        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-brand-400 transition-colors">AK.</a>
-            <div class="flex space-x-6">
-                <a href="index.html" class="hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
-                <div class="flex space-x-4 border-l border-slate-700 pl-6">
-                    <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Google Scholar">
-                        <i class="fa-solid fa-graduation-cap text-xl"></i>
-                    </a>
-                    <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
+        <nav class="sticky top-0 z-50 w-full bg-slate-200/90 dark:bg-slate-950/90 backdrop-blur-md border-b-2 border-slate-300 dark:border-slate-800 transition-colors duration-300 shadow-sm dark:shadow-none">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tighter transition-colors flex items-center gap-1">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-500 dark:from-brand-400 dark:to-emerald-400">AK.</span> 
+                    <span class="font-normal text-lg tracking-normal opacity-80 hidden sm:inline-block text-slate-900 dark:text-white">Adithya Kommini</span>
+                </a>
+                <div class="flex space-x-6 items-center">
+                    <a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
+                    <div class="flex space-x-4 border-l-2 border-slate-300 dark:border-slate-700 pl-6 items-center">
+                        <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#0A66C2] dark:hover:text-white transition-colors" aria-label="Google Scholar">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </a>
+                        <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-500 dark:text-slate-400 hover:text-[#333] dark:hover:text-white transition-colors" aria-label="GitHub">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+
+                        <div class="w-0.5 h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                        
+                        <button id="theme-toggle" type="button" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-slate-400 dark:bg-brand-600" role="switch" aria-checked="false" aria-label="Toggle Dark Mode">
+                            <span id="theme-toggle-knob" aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0 dark:translate-x-5 flex items-center justify-center">
+                                <i class="fa-solid fa-sun text-[10px] text-slate-400 dark:hidden"></i>
+                                <i class="fa-solid fa-moon text-[10px] text-brand-600 hidden dark:block"></i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <!-- Header -->
-        <header class="container mx-auto px-6 pt-12 pb-12 max-w-4xl">
-            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
-                Research & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400">Publications</span>
+        <header class="container mx-auto px-6 pt-12 pb-8 max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
+                Research & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-500 dark:from-brand-400 dark:to-emerald-400">Publications</span>
             </h1>
-            <p class="text-lg text-slate-400 leading-relaxed">
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 An archive of my Ph.D. research at UMass Amherst focused on predictive modeling, high-performance computing, semiconductor dynamics, and thermoelectric transport.
             </p>
         </header>
 
         <main class="container mx-auto px-6 pb-24 max-w-4xl space-y-16">
-            
-            <!-- Research Projects -->
-            <section id="projects">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Research Projects</h2>
-                
-                <div class="space-y-6">
-                    <!-- Project 1 -->
-                    <div class="glass-card rounded-2xl p-6 hover:border-brand-500/50 transition-colors">
-                        <h3 class="text-xl font-bold text-white mb-2 flex justify-between items-start">
-                            <span>Boltzmann Transport Solver for 2D Materials</span>
-                            <a href="https://github.com/akommini" target="_blank" class="text-brand-400 hover:text-brand-300 text-sm"><i class="fa-solid fa-code"></i> Repository</a>
-                        </h3>
-                        <div class="mb-3">
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">C++</span>
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">High-Performance Computing</span>
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">OpenMP / MPI</span>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            A highly parallelized C++ package designed to simulate and study quantum effects in materials. This solver models the Boltzmann Transport Equation (BTE) to predict electrical properties, charge transport dynamics, and evaluate strategies to improve the thermoelectric efficiency of semiconductor structures. The tool handles complex scattering mechanisms and outputs data for further analysis.
-                        </p>
-                    </div>
 
-                    <!-- Project 2 -->
-                    <div class="glass-card rounded-2xl p-6 hover:border-brand-500/50 transition-colors">
-                        <h3 class="text-xl font-bold text-white mb-2">Simulating Quantum Effects in Semiconductor Nanostructures</h3>
-                        <div class="mb-3">
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">MATLAB</span>
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">Python</span>
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">Predictive Modeling</span>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Predictive modeling suite built to understand charge transport dynamics across multi-layered and twisted heterostructures (such as twisted bilayer graphene). Prototypes were originally modeled in MATLAB and scaled using high-performance cloud environments to handle massive probabilistic system simulations for energy harvesting scenarios.
-                        </p>
-                    </div>
+            <!-- Demystifying My Research -->
+            <section id="research-summary" class="glass-card rounded-2xl p-8 border-2 border-slate-300 dark:border-slate-800">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Demystifying My Research</h2>
+                <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed space-y-4">
+                    <p>
+                        At its core, my Ph.D. research focused on understanding how heat and electricity move through microscopic materials—specifically semiconductors—and how we can optimize them for better energy efficiency (a field known as <strong>thermoelectricity</strong>).
+                    </p>
+                    <p>
+                        Because these materials are measured at the nanoscale, their behavior isn't governed by classical physics; it's governed by complex <strong>quantum effects</strong>. To study and predict these interactions, I couldn't just use a standard computer. I had to build custom predictive models and leverage <strong>high-performance computing (HPC)</strong> and massive <strong>cloud/data center computing clusters</strong> to run highly parallelized simulations.
+                    </p>
+                    <p>
+                        The mathematical foundations required to solve these equations, and the need to process vast amounts of simulated data across distributed computing networks, seamlessly bridged my transition into <strong>AI and Machine Learning</strong>. The same principles of optimizing massive parallel workloads, handling complex predictive modeling, and analyzing high-dimensional data directly apply to architecting and training today's large-scale enterprise AI systems. Specifically, I built physics-aware models for high-throughput discovery of 2D materials and simulated full phonon distributions to evaluate performance bottlenecks—projects that required transforming massive theoretical datasets into actionable insights.
+                    </p>
                 </div>
             </section>
 
-            <!-- Journal Publications -->
-            <section id="publications">
-                <div class="flex justify-between items-end mb-8 border-b border-slate-800 pb-2">
-                    <h2 class="text-2xl font-bold text-white">Journal Publications</h2>
-                    <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" class="text-sm text-brand-400 hover:text-brand-300 flex items-center gap-1">
+            <!-- Research Work -->
+            <section id="research-work">
+                <div class="flex justify-between items-end mb-8 border-b-2 border-slate-300 dark:border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Research Work</h2>
+                    <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" class="text-sm text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-white flex items-center gap-1 font-medium transition-colors">
                         Google Scholar <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
 
-                <ul class="space-y-6 list-none pl-0">
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Very high thermoelectric power factor near magic angle in twisted bilayer graphene</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>2D Materials</em>, 8(2), 025026, 2021. 
+                <ul class="space-y-8 list-none pl-0">
+                    
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Very high thermoelectric power factor near magic angle in twisted bilayer graphene</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Demonstrated that flat bands emerging at low twist angles in twisted bilayer graphene result in sharp features in the electronic density of states, leading to superior and tuneable thermoelectric performance.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. Kommini, Z. Aksamija &bull; 2D Materials, 8(2), 025026, 2021.
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Anisotropic Thermoelectric Power Factor of Two-Dimensional Materials with Periodic Potential Barriers: The Wigner-Rode Formalism</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Physical Review Applied</em>, 14, 034037, 2020. 
-                            <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.14.034037" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">High throughput 2D material discovery for thermoelectric applications / Materials selection rules for optimum power factor</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Calculated the power factor of 2D materials using existing databases by accurately modeling carrier transport, determining optimal material parameters using a novel controlled-scattering approach.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. Kommini, Z. Aksamija &bull; Journal of Physics: Materials, 3, 015005, 2020. 
+                            <a href="https://iopscience.iop.org/article/10.1088/2515-7639/ab4600" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Materials selection rules for optimum power factor in 2-dimensional thermoelectrics</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Physics: Materials</em>, 3, 015005, 2020. 
-                            <a href="https://iopscience.iop.org/article/10.1088/2515-7639/ab4600" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Anisotropy in power factor of 2D materials with periodic potential barriers using Wigner-Rode formalism</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Evaluated the anisotropy in power factor that arises from carriers being transported by different processes (energy filtering and confinement) in 2D materials like MoS2.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. Kommini, Z. Aksamija &bull; Physical Review Applied, 14, 034037, 2020. 
+                            <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.14.034037" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Electron Transport and Thermopower in 2D and 3D Heterostructures – A Theory Perspective</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            A. K. Majee, <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Annalen der Physik</em>, 531, 1800510, 2019. 
-                            <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/andp.201800510" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Electron Transport and Thermopower in 2D and 3D Heterostructures – A Theory Perspective</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            A comprehensive review discussing the impact of interfaces and heterojunctions on the electronic and thermoelectric transport properties of materials, ranging from graphene to transition metal dichalcogenides.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. K. Majee, A. Kommini, Z. Aksamija &bull; Annalen der Physik, 531, 1800510, 2019. 
+                            <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/andp.201800510" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Resonant tunneling induced enhancement of electron emission by ultra-thin coatings</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            C. Henkel, R. Zierold, <strong>A. Kommini</strong>, C. Thomason, Z. Aksamija, R. H. Blick &bull; <em>Scientific Reports</em>, 9(1), 6840, 2019. 
-                            <a href="https://www.nature.com/articles/s41598-019-43149-y" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Fowler-Nordheim emission in surface modified free-standing diamond nanomembranes</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Studied field emission from bulk emitters covered with a thin wide-gap semiconductor layer for mass spectrometry applications, exploring resonant tunneling induced enhancement of electron emission.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            C. Henkel, R. Zierold, A. Kommini, C. Thomason, Z. Aksamija, R. H. Blick &bull; Scientific Reports, 9(1), 6840, 2019. 
+                            <a href="https://www.nature.com/articles/s41598-019-43149-y" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Thermoelectric Properties of Periodic Quantum Structures in the Wigner-Rode Formalism</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Physics: Condensed Matter</em>, 30(4), 044004, 2018. 
-                            <a href="https://iopscience.iop.org/article/10.1088/1361-648X/aaa110/meta" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Thermoelectric properties of periodic quantum structures in the Wigner-Rode formalism</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Implemented a comprehensive transport model using the Wigner–Rode formalism to study tunneling, energy relaxation, and barrier impacts in semiconducting nanostructures.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. Kommini, Z. Aksamija &bull; Journal of Physics: Condensed Matter, 30(4), 044004, 2018. 
+                            <a href="https://iopscience.iop.org/article/10.1088/1361-648X/aaa110/meta" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">Low-Temperature Enhancement of the Thermoelectric Seebeck coefficient in Gated 2d Semiconductor Nanomembranes</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Computational Electronics</em>, 15(1), 27-33, 2015. 
-                            <a href="https://link.springer.com/article/10.1007/s10825-015-0782-1" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Low-temperature enhancement of the thermoelectric Seebeck coefficient in gated 2D semiconductor nanomembranes</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Formulated a novel controlled scattering approach by simulating a confined 3D material to mimic a 2D material with a gate, boosting device thermoelectric properties.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            A. Kommini, Z. Aksamija &bull; Journal of Computational Electronics, 15(1), 27-33, 2015. 
+                            <a href="https://link.springer.com/article/10.1007/s10825-015-0782-1" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
                         </div>
                     </li>
 
-                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
-                        <div class="text-white text-lg leading-snug">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</div>
-                        <div class="text-slate-400 text-sm mt-1.5">
-                            P. G. Gopinath, <strong>K. Adithya</strong>, B. Ajay &bull; <em>International Journal of Computer Applications</em>, 72(9), 28-33, 2013. 
-                            <a href="https://www.ijcaonline.org/archives/volume72/number9/12523-9034" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Embedded different Advanced Encryption Standard (AES) encoders into a System-on-a-Chip (SOC) based watermarking scheme at the behavior design level to securely identify intellectual property.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            P. G. Gopinath, K. Adithya, B. Ajay &bull; International Journal of Computer Applications, 72(9), 28-33, 2013. 
+                            <a href="https://www.ijcaonline.org/archives/volume72/number9/12523-9034" target="_blank" class="text-brand-600 dark:text-brand-400 hover:underline ml-2 font-medium not-italic"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-slate-900 dark:text-white text-lg font-semibold leading-snug mb-1.5">Phonon drag contribution towards TE performance in MoS2: Using full phonon distribution</div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">
+                            Studied the contribution of different phonon modes towards phonon drag by calculating the full phonon distribution including normal processes to inform the selection of semiconducting materials for future thermoelectric devices.
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-500 text-sm italic">
+                            Research Project
                         </div>
                     </li>
                 </ul>
@@ -198,28 +247,49 @@
 
             <!-- Conference Appearances (Condensed) -->
             <section id="conferences">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Conference Appearances</h2>
-                <div class="bg-slate-800/20 rounded-xl p-6 border border-slate-800">
-                    <ul class="space-y-4 list-none pl-0 text-sm text-slate-400">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b-2 border-slate-300 dark:border-slate-800 pb-2">Conference Appearances</h2>
+                <div class="bg-slate-100 dark:bg-slate-800/30 rounded-xl p-6 border-2 border-slate-300 dark:border-slate-700/50">
+                    <ul class="space-y-4 list-none pl-0 text-sm text-slate-600 dark:text-slate-400">
                         <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span class="text-slate-300 font-semibold min-w-[140px]">APS March Meeting</span> 
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">APS March Meeting</span> 
                             <span>Boston, MA (2019) &bull; <em class="text-slate-500">Materials selection rules for optimum power factor</em></span>
                         </li>
                         <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span class="text-slate-300 font-semibold min-w-[140px]">MRS Fall Meeting</span> 
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">MRS Fall Meeting</span> 
                             <span>Boston, MA (2018) &bull; <em class="text-slate-500">Improving Thermoelectric Power Factor in 2D Materials</em></span>
                         </li>
                         <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span class="text-slate-300 font-semibold min-w-[140px]">HPC Day</span> 
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">HPC Day</span> 
                             <span>Dartmouth, MA (2017) &bull; <em class="text-slate-500">Wigner-Rode Formalism simulations</em></span>
                         </li>
                         <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span class="text-slate-300 font-semibold min-w-[140px]">ICT</span> 
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">ICT</span> 
                             <span>Pasadena, CA (2017) &bull; <em class="text-slate-500">Two presentations on Thermoelectric Properties & Inelastic scattering</em></span>
                         </li>
                         <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span class="text-slate-300 font-semibold min-w-[140px]">20th SISPAD</span> 
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">20th SISPAD</span> 
                             <span>Washington, D.C. (2015) &bull; <em class="text-slate-500">Enhancement of Seebeck coefficient</em></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- News & Features -->
+            <section id="news-features">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b-2 border-slate-300 dark:border-slate-800 pb-2">News & Features</h2>
+                <div class="bg-slate-100 dark:bg-slate-800/30 rounded-xl p-6 border-2 border-slate-300 dark:border-slate-700/50">
+                    <ul class="space-y-4 list-none pl-0 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">MGHPCC Highlight</span> 
+                            <a href="https://engineering.umass.edu/news/ece-researchers-featured-mghpcc-website" target="_blank" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                                ECE Researchers Featured on MGHPCC Website <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 opacity-50"></i>
+                            </a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-800 dark:text-slate-300 font-semibold min-w-[140px]">Research Feature</span> 
+                            <a href="https://www.mghpcc.org/exploring-thermoelectric-behavior-at-the-nanoscale/" target="_blank" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                                Exploring Thermoelectric Behavior at the Nanoscale <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 opacity-50"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -228,16 +298,31 @@
         </main>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-800 mt-12">
+        <footer class="border-t-2 border-slate-300 dark:border-slate-800 mt-12 transition-colors duration-300">
             <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-500 text-sm">
                     &copy; <script>document.write(new Date().getFullYear())</script> Adithya Kommini. All rights reserved.
                 </p>
                 <div class="flex gap-4">
-                    <a href="index.html" class="text-slate-500 hover:text-white transition-colors text-sm">Main Portfolio</a>
+                    <a href="index.html" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm">Main Portfolio</a>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- Theme Interactivity Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
