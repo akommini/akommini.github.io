@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Adithya Kommini</title>
+    <meta name="description" content="Research and Independent Projects by Adithya Kommini, Lead Data Scientist.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+    
+    <!-- Decorative Background -->
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="relative z-10">
+        <!-- Navigation -->
+        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-brand-400 transition-colors">AK.</a>
+            <div class="flex space-x-6">
+                <a href="index.html" class="hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
+                <div class="flex space-x-4 border-l border-slate-700 pl-6">
+                    <a href="https://www.linkedin.com/in/adithya-kommini/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="container mx-auto px-6 pt-12 pb-12 max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
+                My <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400">Projects</span>
+            </h1>
+            <p class="text-lg text-slate-400 leading-relaxed">
+                A collection of my academic research applications and independent open-source data science projects.
+            </p>
+        </header>
+
+        <main class="container mx-auto px-6 pb-24 max-w-4xl space-y-16">
+            
+            <!-- Research Projects -->
+            <section id="research-projects">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2 flex items-center gap-3">
+                    <i class="fa-solid fa-microscope text-brand-400"></i> Research Projects
+                </h2>
+                
+                <ul class="space-y-6 list-none pl-0">
+                    
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">High throughput 2D material discovery for thermoelectric applications: predicting power factor using physics aware models</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Calculates the power factor of 2D materials using existing databases by accurately modeling carrier transport.
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Phonon drag contribution towards TE performance in MoS2: Using full phonon distribution</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Studies the contribution of different phonon modes towards the drag by calculating the full phonon distribution including normal processes.
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Anisotropy in power factor of 2D materials with periodic potential barriers using Wigner-Rode formalism</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Evaluates the anisotropy in power factor that arises from carriers being transported by different processes in 2D materials.
+                            <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.14.034037" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Towards a higher power factor in 2D materials: Role of inelastic scattering mechanisms</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Determines optimal material parameters to optimize the thermoelectric power factor using a novel controlled-scattering approach.
+                            <a href="https://iopscience.iop.org/article/10.1088/2515-7639/ab4600" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Thermoelectric properties of periodic quantum structures in the Wigner-Rode formalism</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Implements a comprehensive transport model using the Wigner–Rode formalism to study tunneling and barrier impacts in semiconducting nanostructures.
+                            <a href="https://iopscience.iop.org/article/10.1088/1361-648X/aaa110/meta" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Fowler-Nordheim emission in surface modified free-standing diamond nanomembranes</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Studies field emission from bulk emitters covered with a thin wide-gap semiconductor layer for mass spectrometry applications.
+                            <a href="https://www.nature.com/articles/s41598-019-43149-y" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg font-semibold leading-snug">Low-temperature enhancement of the thermoelectric Seebeck coefficient in gated 2D semiconductor nanomembranes</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            Formulates a novel controlled scattering approach by simulating a confined 3D material to mimic a 2D material with a gate.
+                            <a href="https://link.springer.com/article/10.1007/s10825-015-0782-1" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> Journal Paper</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+
+            <!-- Independent Projects -->
+            <section id="independent-projects">
+                <div class="flex items-center justify-between mb-6 border-b border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-code text-brand-400"></i> Independent Projects
+                    </h2>
+                    <a href="https://github.com/akommini" target="_blank" class="text-sm text-brand-400 hover:text-white transition-colors flex items-center gap-1">
+                        View all on GitHub <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+                
+                <ul class="space-y-5 list-none pl-0">
+                    
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">PCvalueBuilder: A recommender system to assist customers in upgrading their PC hardware</span>
+                            <a href="https://github.com/akommini/PCvalueBuilder" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">A convolution neural network model for Spoken digit recognition using Mel-frequency Cepstrum</span>
+                            <a href="https://github.com/akommini/Spoken-Numeric-Digit-detection" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">Implementation of image classifier for RGB images using artificial neural networks (NN)</span>
+                            <a href="https://github.com/akommini/ImageClassifierNN" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">Optimal image compression for efficient reconstruction using unsupervised learning</span>
+                            <a href="https://github.com/akommini/ImageCompression" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">Air quality prediction using hyperparameter regression analysis</span>
+                            <a href="https://github.com/akommini/AirQuality" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">Design and Analysis of a Feed-forward PUF (32 nm node) under Voltage Scaling</span>
+                            <a href="https://github.com/akommini/Feed-forward-PUF" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">Nanoscale Implementation of G-Share Branch Predictor</span>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="text-white text-lg font-semibold leading-snug">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</span>
+                            <a href="https://github.com/akommini/AES-IP-SOC" target="_blank" class="text-slate-400 hover:text-white transition-colors shrink-0 mt-0.5" aria-label="View on GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 mt-12">
+            <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> Adithya Kommini. All rights reserved.
+                </p>
+                <div class="flex gap-4">
+                    <a href="index.html" class="text-slate-500 hover:text-white transition-colors text-sm">Main Portfolio</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

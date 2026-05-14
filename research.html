@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Publications | Adithya Kommini</title>
+    <meta name="description" content="Academic research projects and publications by Adithya Kommini, Ph.D.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+    
+    <!-- Decorative Background -->
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="relative z-10">
+        <!-- Navigation -->
+        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-brand-400 transition-colors">AK.</a>
+            <div class="flex space-x-6">
+                <a href="index.html" class="hover:text-brand-400 transition-colors hidden sm:block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Portfolio</a>
+                <div class="flex space-x-4 border-l border-slate-700 pl-6">
+                    <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Google Scholar">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </a>
+                    <a href="https://github.com/akommini" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="container mx-auto px-6 pt-12 pb-12 max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 leading-tight">
+                Research & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400">Publications</span>
+            </h1>
+            <p class="text-lg text-slate-400 leading-relaxed">
+                An archive of my Ph.D. research at UMass Amherst focused on predictive modeling, high-performance computing, semiconductor dynamics, and thermoelectric transport.
+            </p>
+        </header>
+
+        <main class="container mx-auto px-6 pb-24 max-w-4xl space-y-16">
+            
+            <!-- Research Projects -->
+            <section id="projects">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Research Projects</h2>
+                
+                <div class="space-y-6">
+                    <!-- Project 1 -->
+                    <div class="glass-card rounded-2xl p-6 hover:border-brand-500/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-2 flex justify-between items-start">
+                            <span>Boltzmann Transport Solver for 2D Materials</span>
+                            <a href="https://github.com/akommini" target="_blank" class="text-brand-400 hover:text-brand-300 text-sm"><i class="fa-solid fa-code"></i> Repository</a>
+                        </h3>
+                        <div class="mb-3">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">C++</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">High-Performance Computing</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">OpenMP / MPI</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            A highly parallelized C++ package designed to simulate and study quantum effects in materials. This solver models the Boltzmann Transport Equation (BTE) to predict electrical properties, charge transport dynamics, and evaluate strategies to improve the thermoelectric efficiency of semiconductor structures. The tool handles complex scattering mechanisms and outputs data for further analysis.
+                        </p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card rounded-2xl p-6 hover:border-brand-500/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-2">Simulating Quantum Effects in Semiconductor Nanostructures</h3>
+                        <div class="mb-3">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">MATLAB</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">Python</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-300">Predictive Modeling</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Predictive modeling suite built to understand charge transport dynamics across multi-layered and twisted heterostructures (such as twisted bilayer graphene). Prototypes were originally modeled in MATLAB and scaled using high-performance cloud environments to handle massive probabilistic system simulations for energy harvesting scenarios.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journal Publications -->
+            <section id="publications">
+                <div class="flex justify-between items-end mb-8 border-b border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-white">Journal Publications</h2>
+                    <a href="https://scholar.google.com/citations?user=8buiCMUAAAAJ&hl=en&authuser=1" target="_blank" class="text-sm text-brand-400 hover:text-brand-300 flex items-center gap-1">
+                        Google Scholar <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <ul class="space-y-6 list-none pl-0">
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Very high thermoelectric power factor near magic angle in twisted bilayer graphene</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>2D Materials</em>, 8(2), 025026, 2021. 
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Anisotropic Thermoelectric Power Factor of Two-Dimensional Materials with Periodic Potential Barriers: The Wigner-Rode Formalism</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Physical Review Applied</em>, 14, 034037, 2020. 
+                            <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.14.034037" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Materials selection rules for optimum power factor in 2-dimensional thermoelectrics</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Physics: Materials</em>, 3, 015005, 2020. 
+                            <a href="https://iopscience.iop.org/article/10.1088/2515-7639/ab4600" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Electron Transport and Thermopower in 2D and 3D Heterostructures – A Theory Perspective</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            A. K. Majee, <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Annalen der Physik</em>, 531, 1800510, 2019. 
+                            <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/andp.201800510" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Resonant tunneling induced enhancement of electron emission by ultra-thin coatings</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            C. Henkel, R. Zierold, <strong>A. Kommini</strong>, C. Thomason, Z. Aksamija, R. H. Blick &bull; <em>Scientific Reports</em>, 9(1), 6840, 2019. 
+                            <a href="https://www.nature.com/articles/s41598-019-43149-y" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Thermoelectric Properties of Periodic Quantum Structures in the Wigner-Rode Formalism</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Physics: Condensed Matter</em>, 30(4), 044004, 2018. 
+                            <a href="https://iopscience.iop.org/article/10.1088/1361-648X/aaa110/meta" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">Low-Temperature Enhancement of the Thermoelectric Seebeck coefficient in Gated 2d Semiconductor Nanomembranes</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            <strong>A. Kommini</strong>, Z. Aksamija &bull; <em>Journal of Computational Electronics</em>, 15(1), 27-33, 2015. 
+                            <a href="https://link.springer.com/article/10.1007/s10825-015-0782-1" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-brand-500 before:rounded-full">
+                        <div class="text-white text-lg leading-snug">An AES-Based Intellectual-Property Identification in System-on-a-Chip (SOC) Design</div>
+                        <div class="text-slate-400 text-sm mt-1.5">
+                            P. G. Gopinath, <strong>K. Adithya</strong>, B. Ajay &bull; <em>International Journal of Computer Applications</em>, 72(9), 28-33, 2013. 
+                            <a href="https://www.ijcaonline.org/archives/volume72/number9/12523-9034" target="_blank" class="text-brand-400 hover:underline ml-2"><i class="fa-solid fa-link text-[10px]"></i> View Journal</a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Conference Appearances (Condensed) -->
+            <section id="conferences">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">Conference Appearances</h2>
+                <div class="bg-slate-800/20 rounded-xl p-6 border border-slate-800">
+                    <ul class="space-y-4 list-none pl-0 text-sm text-slate-400">
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-300 font-semibold min-w-[140px]">APS March Meeting</span> 
+                            <span>Boston, MA (2019) &bull; <em class="text-slate-500">Materials selection rules for optimum power factor</em></span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-300 font-semibold min-w-[140px]">MRS Fall Meeting</span> 
+                            <span>Boston, MA (2018) &bull; <em class="text-slate-500">Improving Thermoelectric Power Factor in 2D Materials</em></span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-300 font-semibold min-w-[140px]">HPC Day</span> 
+                            <span>Dartmouth, MA (2017) &bull; <em class="text-slate-500">Wigner-Rode Formalism simulations</em></span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-300 font-semibold min-w-[140px]">ICT</span> 
+                            <span>Pasadena, CA (2017) &bull; <em class="text-slate-500">Two presentations on Thermoelectric Properties & Inelastic scattering</em></span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span class="text-slate-300 font-semibold min-w-[140px]">20th SISPAD</span> 
+                            <span>Washington, D.C. (2015) &bull; <em class="text-slate-500">Enhancement of Seebeck coefficient</em></span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 mt-12">
+            <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> Adithya Kommini. All rights reserved.
+                </p>
+                <div class="flex gap-4">
+                    <a href="index.html" class="text-slate-500 hover:text-white transition-colors text-sm">Main Portfolio</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
